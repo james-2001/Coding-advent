@@ -33,6 +33,6 @@ check2 <-function(i){
 }
 
 v2=sapply(1:length(letters),FUN=check2)
-print(sum(v2)+1)
+print(sum(v2))
 
 
