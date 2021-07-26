@@ -22,9 +22,8 @@ correct_count_p2 = 0
 for i in range(n):
     pw = password[i]
     char = letter[i]
-    low = int(bounds[i][0])
-    up = int(bounds[i][1])
-    if (pw[low-1] == char) != (pw[up-1] == char):
+    low, up = bounds[i]
+    if (pw[int(low)-1] == char) != (pw[int(up)-1] == char):
         correct_count_p2 += 1
 
 print(correct_count_p2)
