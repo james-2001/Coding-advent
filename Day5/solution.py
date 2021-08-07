@@ -9,4 +9,3 @@ print(f'Part 1: {max(seat_id)}')
 for seat in seat_id:
     if seat+1 not in seat_id and seat + 2 in seat_id:
         print(f'part 2: {seat+1}')
-
