@@ -73,17 +73,14 @@ def valid_pid(pid):
 
 
 for item in passport:
-    functions = [valid_ecl, valid_byr, valid_eyr, 
-                valid_hcl, valid_hgt, valid_iyr, 
-                valid_pid]
+    functions = [valid_ecl, valid_byr, valid_eyr,
+                 valid_hcl, valid_hgt, valid_iyr,
+                 valid_pid]
     key_in_passport = [key in item for key in req_fields]
     if all(key_in_passport):
-        valid_fields = [False]*7
-        tests_passed =[test(item[(test.__name__)[-3:]]) for test in functions]
+        tests_passed = [test(item[(test.__name__)[-3:]]) for test in functions]
         if all(tests_passed):
-            valid_counter+=1
-                
-
+            valid_counter += 1
 
 
 print(valid_counter)
