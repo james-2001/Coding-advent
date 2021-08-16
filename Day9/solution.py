@@ -14,4 +14,19 @@ def attack(pa, data):
             return data[i]
 
 
-print(attack(25, ls))
+weakness = attack(25, ls)
+
+
+def exploit(val, data):
+    for i in range(len(data)):
+        acc = []
+        j = 0
+        while sum(acc) < val:
+            acc = data[i:i+j]
+            j += 1
+            if sum(acc) == val:
+                return min(acc)+max(acc)
+
+
+print(f'Part 1: {weakness}')
+print(f'Part 2: {exploit(weakness, ls)}')
