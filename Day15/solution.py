@@ -5,5 +5,6 @@ def play(n):
     for i in range(6, n):
         history[prev], prev = i, i - history[prev] if prev in history else 0
 
+
 print(f'Part 1: {play(2020)}')
 print(f'Part 2: {play(30000000)}')
