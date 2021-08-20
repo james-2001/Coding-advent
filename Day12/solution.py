@@ -60,8 +60,9 @@ class Part2(Navigate):
         self.waypoint += (0-1j)*n
 
 
-for part, wp in {1: (0, 1), 2: (1, 10)}.items():
-    n = eval(f'Part{part}(ls, {wp})')
-    n.nav()
-    n.man_distance()
-    print(f'Part {part}: {n.distance}')
+if __name__ == "__main__":
+    for part, wp in {1: (0, 1), 2: (1, 10)}.items():
+        n = eval(f'Part{part}(ls, {wp})')
+        n.nav()
+        n.man_distance()
+        print(f'Part {part}: {n.distance}')
