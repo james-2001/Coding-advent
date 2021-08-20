@@ -4,6 +4,7 @@ def play(n):
     history = {number: turn + 1 for turn, number in enumerate(spoken)}
     for i in range(6, n):
         history[prev], prev = i, i - history[prev] if prev in history else 0
+    return prev
 
 
 print(f'Part 1: {play(2020)}')
