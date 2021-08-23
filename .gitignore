@@ -1,2 +1,4 @@
 .vscode 
-*/test*.txt
+
+# Ignore test inputs
+*/test*.txt 
