@@ -26,10 +26,10 @@ shuntFold acc x
                         output = output acc}
 
 shuntRPN:: Shunt -> String 
-shuntRPN (Shunt {operator = op, output = ot}) = reverse $ op ++ ot
+shuntRPN (Shunt {operator = op, output = ot}) = op ++ ot
 
 solveRPN:: String -> Int
-solveRPN s = head $ foldl rpnFold [] s 
-    where rpnFold (x:y:xs) '*' = (x * y):xs
-          rpnFold (x:y:xs) '+' = (x + y):xs
-          rpnFold xs n = digitToInt n:xs
+solveRPN s = head $ foldr rpnFold [] s
+    where rpnFold '*' (x:y:xs)  = (x * y):xs
+          rpnFold '+' (x:y:xs)= (x + y):xs
+          rpnFold n xs = digitToInt n:xs
