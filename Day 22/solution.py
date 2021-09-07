@@ -31,10 +31,10 @@ def recurse(p1: list, p2: list):
         previous.add((tuple(p1), tuple(p2)))
         c1, c2 = p1.pop(0), p2.pop(0)
         if len(p1) >= c1 and len(p2) >= c2:
-            winner = recurse(p1[:c1], p2[:c2])
+            p1_winner = recurse(p1[:c1], p2[:c2])
         else:
-            winner = c1 > c2
-        if winner:
+            p1_winner = c1 > c2
+        if p1_winner:
             p1 += [c1, c2]
         else:
             p2 += [c2, c1]
