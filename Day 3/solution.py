@@ -16,7 +16,7 @@ def tree_counter(pair):
     return tree_count
 
 
-print(f'Part 1: {tree_counter((2,1))}')
+print(f'Part 1: {tree_counter((3,1))}')
 
 inputs = [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
 
