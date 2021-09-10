@@ -12,14 +12,17 @@ for i in range(n):
     #print(destination, current_index)
     x = cups[current_index]
     cups.rotate(-(current_index+1))
+    current_index = -1
     pickup = [cups.popleft() for _ in range (3)]
     while destination in pickup:
         destination = ((destination -2)%len(cups)) +1
-    print(destination,x)
+    print(destination,x, pickup)
     pickup.reverse()
     while destination != cups[0]:
         cups.rotate(-1)
+        current_index-=1
     cups.extendleft(pickup)
+    current_index+=3
     current_index = (current_index + 1) % len(cups) 
 
 print(cups)
