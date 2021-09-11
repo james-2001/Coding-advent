@@ -4,25 +4,26 @@ inpot = "364289715"
 test = "389125467"
 test2 = "328915467"
 
-cups = deque(map(int,list(test)))
+cups = deque(map(int,list(inpot)))
 current_index = 0
-n=10
+n=100
 for i in range(n):
-    destination = cups[current_index]-1
-    #print(destination, current_index)
-    x = cups[current_index]
-    cups.rotate(-(current_index+1))
-    current_index = -1
-    pickup = [cups.popleft() for _ in range (3)]
-    while destination in pickup:
-        destination = ((destination -2)%len(cups)) +1
-    print(destination,x, pickup)
+    destination = (cups[current_index]-2)%9 +1
+    current_cup = cups[0]
+    cups.rotate(-1)
+    pickup = [cups.popleft() for _ in range(3)]
     pickup.reverse()
-    while destination != cups[0]:
-        cups.rotate(-1)
-        current_index-=1
-    cups.extendleft(pickup)
-    current_index+=3
-    current_index = (current_index + 1) % len(cups) 
+    while destination in pickup:
+        destination = (destination-2)%9 + 1
+    destination_index = cups.index(destination)
+    for c in pickup:
+        cups.insert(destination_index+1, c)
 
-print(cups)
+while cups[-1]!= 1:
+    cups.rotate()
+
+output = ""
+while cups[0]!=1:
+    output+=str(cups.popleft())
+
+print(output)
