@@ -14,9 +14,10 @@ def rotate_past(deq: deque, element):
 
 
 def simulate(cups: deque,n):
+    m = max(cups)
     for _ in range(n):
         current = cups[-1]
-        destination = (current-2)%9 +1
+        destination = (current-2)%m +1
         pickup = [cups.popleft() for _ in range(3)]
         pickup.reverse()
         while destination in pickup:
@@ -42,10 +43,10 @@ def pt2_output(cups):
             return([cups[i+1], cups[i+2]])
 
 print(pt1_output(simulate(cups,100)))
-# cups = deque(map(int,list(inpot))) + deque(range(10, 10000000))
-# x= simulate(cups, 10000000)
-# print("nearly there")
-# print(pt2_output(x))
+cups = deque(map(int,list(inpot))) + deque(range(10, 10000000))
+x= simulate(cups, 10000000)
+print("nearly there")
+print(pt2_output(x))
 
 
 
