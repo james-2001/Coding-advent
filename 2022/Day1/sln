@@ -1,0 +1,11 @@
+{{$currentMax := 0 }}
+{{- range $elf := Split  .Calories "\n\n" }}
+    {{- $counter := 0 }}
+    {{- range $cals := Split $elf "\n" }}
+        {{- $counter = Int $cals | Add $counter }}
+    {{- end }}
+    {{- if gt $counter $currentMax }} 
+        {{- $currentMax = $counter -}}
+    {{ end -}}
+{{ end -}}
+Part 1 : {{$currentMax}}
