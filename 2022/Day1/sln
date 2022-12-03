@@ -1,11 +1,27 @@
-{{$currentMax := 0 }}
-{{- range $elf := Split  .Calories "\n\n" }}
+{{- $total := list }}
+{{- range $elf := regexSplit "\n\n"  .Calories -1 }}
     {{- $counter := 0 }}
-    {{- range $cals := Split $elf "\n" }}
-        {{- $counter = Int $cals | Add $counter }}
+    {{- range $cals := regexSplit "\n" $elf -1 }}
+        {{- $counter = atoi $cals | add $counter }}
     {{- end }}
-    {{- if gt $counter $currentMax }} 
-        {{- $currentMax = $counter -}}
-    {{ end -}}
+    {{- $total = append $total $counter -}}
 {{ end -}}
-Part 1 : {{$currentMax}}
+
+{{$first := 0 -}}
+{{$second := 0 -}}
+{{$third := 0 }}
+
+{{- range $total}}
+    {{- if gt . $first}}
+        {{- $third = $second}}
+        {{- $second = $first}}
+        {{- $first = .}}
+    {{- else if gt . $second}}
+        {{- $third = $second}}
+        {{- $second = .}}
+    {{- else if gt . $third}}
+        {{- $third = . -}}
+    {{end -}}
+{{end -}}
+Part 1 : {{$first}}
+Part 2: {{add $first $second $third}}
