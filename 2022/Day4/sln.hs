@@ -3,8 +3,9 @@ import Data.List (intersect)
 
 main = do
     input <- readFile "Day4/input.txt"
-    print $ length $ filter id $ map (checkAreas . splitOn ",") $ lines input
-    print $ length $ filter id $ map (checkAreas2 . splitOn ",") $ lines input
+    let parsed = map (splitOn ",") $ lines input
+    print $ length $ filter checkAreas parsed
+    print $ length $ filter checkAreas2 parsed
 
 convertToRange :: [Char] -> [Integer]
 convertToRange x = [read a :: Integer .. read b :: Integer] 
