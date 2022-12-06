@@ -7,6 +7,7 @@ executable x2022
     main-is: sln.hs
     build-depends:
         base,
-        split
-    hs-source-dirs:   Day4
+        split,
+        containers
+    hs-source-dirs:   Day6
     default-language: Haskell2010
