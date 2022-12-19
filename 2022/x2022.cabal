@@ -9,5 +9,5 @@ executable x2022
         base,
         split,
         containers
-    hs-source-dirs:   Day10
+    hs-source-dirs:   Day7
     default-language: Haskell2010
