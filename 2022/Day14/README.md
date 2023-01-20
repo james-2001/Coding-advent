@@ -1,0 +1,1 @@
+Day2 could do with some optimising, but some nice recursion :)
