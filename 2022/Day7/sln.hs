@@ -2,14 +2,15 @@ import qualified Data.Map as M
 import Data.List (find, sortBy)
 
 main = do
-    input <- readFile "Day7/input.txt"
-    let commands = lines input
-    let dirSizes = fst (fold commands)
+    dirSizes <- fst . fold . lines <$> readFile "Day7/input.txt"
     print $ M.foldl (+) 0 $ M.filter (<=100000) dirSizes
-    let reqSpace = 30000000 - (70000000 - dirSizes M.! "/")
-    print reqSpace
-    let toDelete =  find (\a -> snd a > reqSpace) $ sortBy (\(_,a) (_,b) -> a `compare` b) $ M.toList dirSizes
-    print toDelete
+    print $ snd <$> find (\a -> snd a > reqSpace' dirSizes) (sortBy compareTupleBySecond $ M.toList dirSizes)
+
+compareTupleBySecond :: Ord a1 => (a2, a1) -> (a3, a1) -> Ordering
+compareTupleBySecond (_,a) (_,b) = a `compare` b  
+
+reqSpace':: M.Map [Char] Int -> Int
+reqSpace' m = 30000000 - (70000000 - m M.! "/")
 
 fold :: [[Char]] -> (M.Map [Char] Int, [String])
 fold = foldl processIns (M.singleton "/" 0, ["/"]) 

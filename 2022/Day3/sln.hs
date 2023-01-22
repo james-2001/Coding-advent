@@ -1,9 +1,9 @@
 import Data.Char (ord)
 import Data.List.Split (chunksOf)
 
+main :: IO ()
 main = do
-    input <- readFile "Day3/input.txt"
-    let bag = lines input
+    bag <- lines <$> readFile "Day3/input.txt"
     print $ sum $ map (scoreLetter . (head . findCommon) . splitInHalf) bag
     print $ sum $ map (scoreLetter . findCommon3Way) $ chunksOf 3 bag
 splitInHalf :: [a] -> ([a], [a])

@@ -2,8 +2,7 @@ import Data.List.Split (splitOn)
 import Data.List (intersect)
 
 main = do
-    input <- readFile "Day4/input.txt"
-    let parsed = map (splitOn ",") $ lines input
+    parsed <- map (splitOn ",") . lines <$> readFile "Day4/input.txt"
     print $ length $ filter checkAreas parsed
     print $ length $ filter checkAreas2 parsed
 

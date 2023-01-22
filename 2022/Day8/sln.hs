@@ -2,10 +2,9 @@ import Data.Char (digitToInt)
 import Data.List (reverse, transpose, zipWith4, product, maximum)
 
 main = do
-    trees <- readFile "Day8/input.txt"
-    let parsedTrees = parseHorizontal trees
-    print $ countVisible $ zipAngles $ map (concat . getVisibleOfRotation parsedTrees) [0..3]
-    print $ maximum $ findViewingDistances $ getAllVisibleLengths parsedTrees
+    trees <- parseHorizontal <$> readFile "Day8/input.txt"
+    print $ countVisible $ zipAngles $ map (concat . getVisibleOfRotation trees) [0..3]
+    print $ maximum $ findViewingDistances $ getAllVisibleLengths trees
 
 countVisible :: [[Bool]] -> Int
 countVisible xs = length $ filter id $ map or xs
