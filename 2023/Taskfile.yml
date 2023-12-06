@@ -1,0 +1,9 @@
+version: '3'
+
+tasks:
+  new:
+    cmds:
+      - mkdir {{ .day }}
+      - touch {{ .day }}/main.go
+      - touch {{ .day }}/data.txt
+      - touch {{ .day }}/test.txt
