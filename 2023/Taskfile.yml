@@ -7,3 +7,5 @@ tasks:
       - touch {{ .day }}/main.go
       - touch {{ .day }}/data.txt
       - touch {{ .day }}/test.txt
+      - echo "package main" >> {{ .day }}/main.go
+      - echo "func main() {} " >> {{ .day }}/main.go
