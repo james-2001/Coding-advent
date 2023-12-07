@@ -5,7 +5,6 @@ main = do
     let positions = foldl foldFn ([0,0], [0,0], [[0,0]]) cmds
     print $ length $ nub $ thrd positions
     let ropePos = foldl foldFn2 (replicate 10 [0,0], [[0,0]]) cmds
-    -- print ropePos
     print $ length $ nub $ snd ropePos
 
 

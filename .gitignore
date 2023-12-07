@@ -1,4 +1,5 @@
-.vscode 
+.idea
+.vscode
 
 # Ignore test inputs
 */test*.txt 
@@ -44,3 +45,5 @@
 */cabal.project.local~
 */.HTF/
 */.ghc.environment.*
+
+*/node_modules
